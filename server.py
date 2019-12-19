@@ -41,7 +41,6 @@ while msg_recu != b"fin":
     connexion_avec_client.send(b"5 / 5")
 """
 
-
 print("Fermeture de la connexion")
 connexion_avec_client.close()
 connexion_principale.close()
