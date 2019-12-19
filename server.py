@@ -21,25 +21,16 @@ num2 = float(connexion_avec_client.recv(1))
 op = connexion_avec_client.recv(1).decode()
 
 if op=="+":
-    print(num1,"+",num2,"=",add(num1,num2))  
+    result=add(num1,num2)
 if op=='-':
- print(num1,"-",num2,"=",sub(num1,num2))
+    result=sub(num1,num2)
 if op=='*':
- print(num1,"*",num2,"=",mul(num1,num2))
+    result=mul(num1,num2)
 if op=='/':
- print(num1,"/",num2,"=",div(num1,num2))
-if op=='%':
- print(num1, "%", num2, "=", divrem(num1, num2))
-
-"""
-msg_recu = b""
-while msg_recu != b"fin":
-    # L'instruction ci-dessous peut lever une exception si le message
-    # Réceptionné comporte des accents
-    msg_recu2 = connexion_avec_client.recv(1024)
-    print(2*msg_recu2.decode())
-    connexion_avec_client.send(b"5 / 5")
-"""
+    result=div(num1,num2)
+#if op=='%':
+    #result=add(num1,num2)
+connexion_avec_client.send(str(result).encode())
 
 print("Fermeture de la connexion")
 connexion_avec_client.close()
