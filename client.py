@@ -12,9 +12,13 @@ num1 = input("Enter first number: ")
 
 num2 = input("Enter second number: ")
 op = input("Enter the operation: ")
+
 connexion_avec_serveur.send(num1.encode())
 connexion_avec_serveur.send(num2.encode())
 connexion_avec_serveur.send(op.encode())
+result = connexion_avec_serveur.recv(1024)
+
+print(num1,op,num2,"=",result.decode())
 
 
 
